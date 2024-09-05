@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Netflix from "../assets/netflix background.jpeg";
 import { userAuth } from "../context/AuthContext";
 
 export default function Signup() {
