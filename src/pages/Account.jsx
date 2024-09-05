@@ -3,7 +3,7 @@ import SavedShows from "../components/savedShows";
 
 function Account() {
   return (
-    <>
+    <div>
       <div className="w-full text-white">
         <img
           className="w-full h-[400px] object-cover"
@@ -17,7 +17,7 @@ function Account() {
         </div>
       </div>
       <SavedShows />
-    </>
+    </div>
   );
 }
 
