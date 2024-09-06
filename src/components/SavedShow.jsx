@@ -5,7 +5,7 @@ import { db } from "../firebase";
 import { updateDoc, doc, onSnapshot } from "firebase/firestore";
 import { AiOutlineClose } from "react-icons/ai";
 
-const SavedShows = () => {
+function SavedShow() {
   const [movies, setMovies] = useState([]);
   const { user } = userAuth();
 
@@ -86,6 +86,6 @@ const SavedShows = () => {
       </div>
     </>
   );
-};
+}
 
-export default SavedShows;
+export default SavedShow;

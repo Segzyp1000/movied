@@ -1,5 +1,5 @@
 import React from "react";
-import SavedShows from "../components/savedShows";
+import SavedShow from "../components/SavedShow";
 
 function Account() {
   return (
@@ -16,7 +16,7 @@ function Account() {
           </div>
         </div>
       </div>
-      <SavedShows />
+      <SavedShow />
     </div>
   );
 }
