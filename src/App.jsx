@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Account from "./pages/Account";
+import MovieDetails from "./components/MovieDetails";
 import {
   Route,
   createBrowserRouter,
@@ -28,6 +29,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/movie/:id" element={<MovieDetails />} />
       </Route>
     )
   );

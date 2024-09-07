@@ -1,5 +1,6 @@
 import React from "react";
 import SavedShow from "../components/SavedShow";
+import { Link } from "react-router-dom";
 
 function Account() {
   return (
@@ -11,6 +12,13 @@ function Account() {
           alt=""
         />
         <div className="bg-black/80 fixed top-0 left-0 w-full h-[750px] mb-12">
+          <div className="absolute top-[5%] p-4 md:p-8">
+            <Link to="/">
+              <h1 className="text-sm cursor-pointer hover:text-slate-500 text-red-600">
+                Return to homepage
+              </h1>
+            </Link>
+          </div>
           <div className="absolute top-[20%] p-4 md:p-8">
             <h1 className="text-3xl md:text-5xl font-bold">My Shows</h1>
           </div>

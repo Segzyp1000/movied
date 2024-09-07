@@ -1,11 +1,12 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { userAuth } from "../context/AuthContext";
 import { FaSearch } from "react-icons/fa";
 
 function Navbar() {
   const { user, logOut } = userAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = async () => {
     try {
@@ -15,6 +16,15 @@ function Navbar() {
       console.log(error);
     }
   };
+
+  if (
+    location.pathname === "/login" ||
+    location.pathname === "/signup" ||
+    location.pathname === "/account" ||
+    /^\/movie\/\d+$/.test(location.pathname)
+  ) {
+    return null;
+  }
 
   return (
     <div className="flex flex-wrap justify-between items-center p-4 z-[100] w-full absolute">

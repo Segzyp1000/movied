@@ -3,11 +3,13 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { userAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const Movie = ({ item }) => {
   const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
   const { user } = userAuth();
+  const navigate = useNavigate();
 
   const movieID = doc(db, "users", `${user?.email}`);
 
@@ -27,9 +29,14 @@ const Movie = ({ item }) => {
     }
   };
 
+  const handleMovieClick = () => {
+    navigate(`/movie/${item.id}`);
+  };
+
   return (
     <div className=" relative w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer">
       <img
+        onClick={handleMovieClick}
         className="w-full h-auto block"
         src={`https://image.tmdb.org/t/p/w500/${item?.backdrop_path}`}
         alt={item?.title}
