@@ -33,9 +33,9 @@ function MovieDetails() {
   };
 
   return (
-    <div className="w-full h-[500px] text-white">
+    <div className="w-full h-[600px] text-white">
       <div className="w-full  h-full ">
-        <div className="absolute w-full h-[500px] bg-gradient-to-r from-black"></div>
+        <div className="absolute w-full h-[600px] bg-gradient-to-r from-black"></div>
         <div className="absolute top-[5%] p-4 md:p-8">
           <Link to="/">
             <h1 className="text-sm cursor-pointer hover:text-slate-500 text-red-600">
@@ -59,7 +59,7 @@ function MovieDetails() {
           <p className="w-full md:max-w[70%] lg:max-[50%] xl:max-w-[35%] text-gray-300">
             {movie.overview}
           </p>
-          <div className="py-5">
+          <div className="py-5 mb-10">
             <p className="text-gray-500 text-sm ">
               Vote Average:{movie.vote_average}
             </p>
