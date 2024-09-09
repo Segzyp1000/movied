@@ -30,19 +30,19 @@ function Navbar({ value, handleSearch }) {
 
   return (
     <div className="flex flex-wrap justify-between items-center p-4 z-[100] w-full absolute">
-      <div className="flex items-center">
+      <div className="flex items-center flex-wrap whitespace-wrap">
         <Link to="/">
           <h1 className="text-red-600 text-3xl font-bold cursor-pointer">
             NETBOX
           </h1>
         </Link>
       </div>
-      <div className="input-container flex items-center py-3">
+      <div className="input-container flex items-center  py-3">
         <input
           onChange={handleSearch}
           value={value}
           type="text"
-          className="lg:w-full w-[900px] bg-white text-black border-red-500 p-2"
+          className="w-full bg-white text-black border-red-500 p-2"
           placeholder="Search for your favorite movies"
         />
 
