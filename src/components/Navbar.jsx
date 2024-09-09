@@ -65,11 +65,8 @@ function Navbar({ value, handleSearch }) {
         ) : (
           <div className="ml-4">
             <Link to="/login">
-              <button className="text-white pr-4">Sign in</button>
-            </Link>
-            <Link to="/signup">
               <button className="bg-red-500 text-white px-5 py-3 rounded-lg">
-                Sign up
+                Sign in
               </button>
             </Link>
           </div>

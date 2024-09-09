@@ -30,7 +30,7 @@ function Login() {
           alt=""
         />
         <div className="bg-black/60 fixed top-0 left-0 w-full h-screen"></div>
-        <div className="fixed w-full px-4 py-24 z-50">
+        <div className="fixed w-full px-4 py-16 z-50">
           <div className="max-w-[450px] h-[500px] mx-auto bg-black/75 text-white">
             <div className="max-w-[320px] mx-auto py-16">
               <h1 className="text-3xl font-bold">Sign in</h1>
@@ -67,8 +67,8 @@ function Login() {
                   </p>
                   <p className="cursor-pointer">Need help?</p>
                 </div>
-                <p className="py-7 cursor-pointer">
-                  <span className="text-gray-600 text-md">New to Netflix?</span>
+                <p className="py-5 cursor-pointer">
+                  <span className="text-gray-600 text-md">New to Netbox?</span>
                   <Link to="/signup">Sign up</Link>
                 </p>
               </form>
