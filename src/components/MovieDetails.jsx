@@ -16,22 +16,6 @@ function MovieDetails() {
       });
   }, [id]);
 
-  const saveShow = async () => {
-    if (user?.email) {
-      setLike(!like);
-      setSaved(true);
-      await updateDoc(movieID, {
-        savedShows: arrayUnion({
-          id: item.id,
-          title: item.title,
-          img: item.backdrop_path,
-        }),
-      });
-    } else {
-      alert("Please log in to save a movie");
-    }
-  };
-
   return (
     <div className="w-full h-[600px] text-white">
       <div className="w-full  h-full ">

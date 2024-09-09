@@ -11,13 +11,13 @@ const Movie = ({ item }) => {
   const { user } = userAuth();
   const navigate = useNavigate();
 
-  const movieID = doc(db, "users", `${user?.email}`);
+  const movieId = doc(db, "users", `${user?.email}`);
 
   const saveShow = async () => {
     if (user?.email) {
       setLike(!like);
       setSaved(true);
-      await updateDoc(movieID, {
+      await updateDoc(movieId, {
         savedShows: arrayUnion({
           id: item.id,
           title: item.title,
@@ -42,7 +42,7 @@ const Movie = ({ item }) => {
         alt={item?.title}
         key={item.id}
       />
-      <diV className="w-full h-full hove:bg-black/80 opacity-100 text-white">
+      <div className="w-full h-full hove:bg-black/80 opacity-100 text-white">
         <p className="whitespace-normal text-xs md:text-sm font-bold flex justify-center items-center text-center">
           {item?.title}
         </p>
@@ -53,7 +53,7 @@ const Movie = ({ item }) => {
             <FaRegHeart className="absolute top-0 left-0 text-gray-300 opacity-50 hover:opacity-100 cursor-pointer" />
           )}
         </p>
-      </diV>
+      </div>
     </div>
   );
 };

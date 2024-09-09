@@ -22,7 +22,7 @@ function Home() {
         title="TopRated"
         fetchURL={requests.requestTopRated}
       />
-      <MovieCard rowId="5" title="Horror" fetchURL={requests.requestHorror} />
+      <MovieCard rowId="5" title="Action" fetchURL={requests.requestHorror} />
     </>
   );
 }

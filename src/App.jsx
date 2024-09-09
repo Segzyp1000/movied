@@ -4,6 +4,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Account from "./pages/Account";
 import MovieDetails from "./components/MovieDetails";
+import Search from "./components/Search";
+
 import {
   Route,
   createBrowserRouter,
@@ -21,6 +23,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/search" element={<Search />} />
         <Route
           path="/account"
           element={

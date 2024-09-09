@@ -3,7 +3,9 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { userAuth } from "../context/AuthContext";
 import { FaSearch } from "react-icons/fa";
 
-function Navbar() {
+function Navbar({ value, handleSearch }) {
+  // Add this line
+  console.log(typeof handleSearch);
   const { user, logOut } = userAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -37,6 +39,8 @@ function Navbar() {
       </div>
       <div className="input-container flex items-center py-3">
         <input
+          onChange={handleSearch}
+          value={value}
           type="text"
           className="lg:w-full w-[900px] bg-white text-black border-red-500 p-2"
           placeholder="Search for your favorite movies"
