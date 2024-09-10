@@ -22,7 +22,7 @@ function MovieDetails() {
         <div className="absolute w-full h-[600px] bg-gradient-to-r from-black"></div>
         <div className="absolute top-[5%] p-4 md:p-8">
           <Link to="/">
-            <h1 className="text-sm cursor-pointer hover:text-slate-500 text-red-600">
+            <h1 className="text-sm cursor-pointer hover:text-slate-500 text-red-50">
               Return to homepage
             </h1>
           </Link>
