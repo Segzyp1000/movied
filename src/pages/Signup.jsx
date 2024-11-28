@@ -27,8 +27,8 @@ export default function Signup() {
           alt=""
         />
         <div className="bg-black/60 fixed top-0 left-0 w-full h-screen"></div>
-        <div className="fixed w-full px-4 py-16 z-50">
-          <div className="max-w-[450px] h-[500px] mx-auto bg-black/75 text-white">
+        <div className="fixed w-full px-4 py-10 mt-16 md:mt-24 z-50">
+          <div className="max-w-[450px] h-[600px] mx-auto bg-black/75 text-white">
             <div className="max-w-[320px] mx-auto py-16">
               <h1 className="text-3xl font-bold">Sign up</h1>
               <form
