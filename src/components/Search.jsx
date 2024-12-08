@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import requests from "../Request";
 
 function Search() {
   const [searchResults, setSearchResults] = useState([]);
   const location = useLocation();
-  const searchQuery = location.state.searchQuery;
+  const searchQuery = location.state?.searchQuery;
 
   useEffect(() => {
     if (searchQuery) {
@@ -19,7 +19,7 @@ function Search() {
   return (
     <div className="relative inline-block cursor-pointer mt-36 group">
       <div className="flex items-center justify-center group mx-24">
-        <div className="w-full h-full  whitespace-wrap relative">
+        <div className="w-full h-full whitespace-wrap relative">
           {searchResults.length > 0 &&
             searchResults.map((item) => (
               <div

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { userAuth } from "../context/AuthContext";
-import { FaSearch } from "react-icons/fa";
 
 function Navbar({ value, handleSearch }) {
   // Add this line
@@ -37,19 +36,7 @@ function Navbar({ value, handleSearch }) {
           </h1>
         </Link>
       </div>
-      <div className="input-container flex items-center  py-3">
-        <input
-          onChange={handleSearch}
-          value={value}
-          type="text"
-          className="w-full bg-white text-black border-red-500 p-2"
-          placeholder="Search for your favorite movies"
-        />
 
-        <button className="bg-red-600 text-white p-3">
-          <FaSearch />
-        </button>
-      </div>
       <div className="flex items-center last">
         {user?.email ? (
           <div className="ml-4">
