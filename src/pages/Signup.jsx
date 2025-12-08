@@ -1,79 +1,125 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { userAuth } from "../context/AuthContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import icons for password toggle
 
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(""); // State for error messages
+  const [showPassword, setShowPassword] = useState(false); 
+  
   const { user, signUp } = userAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(""); // Clear previous errors
 
     try {
       await signUp(email, password);
-      navigate("/");
+      navigate("/"); // Navigate home on successful signup
     } catch (error) {
-      console.log(error);
+      console.error("Signup failed:", error);
+      // Clean up Firebase error messages for better user experience
+      const errorMessage = error.message.replace(/firebase: Error \([^)]+\)/, '').trim();
+      setError(errorMessage || "Failed to sign up. Please try again.");
     }
   };
+
   return (
-    <>
-      <div className="w-full h-screen">
-        <img
-          className="hidden sm:block absolute w-full h-full object-cover"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/f841d4c7-10e1-40af-bcae-07a3f8dc141a/f6d7434e-d6de-4185-a6d4-c77a2d08737b/US-en-20220502-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
-          alt=""
-        />
-        <div className="bg-black/60 fixed top-0 left-0 w-full h-screen"></div>
-        <div className="fixed w-full px-4 py-10 mt-16 md:mt-24 z-50">
-          <div className="max-w-[450px] h-[600px] mx-auto bg-black/75 text-white">
-            <div className="max-w-[320px] mx-auto py-16">
-              <h1 className="text-3xl font-bold">Sign up</h1>
-              <form
-                action=""
-                onSubmit={handleSubmit}
-                className="w-full flex flex-col py-4"
-              >
-                <input
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="enail"
-                  placeholder="Email"
-                  autoComplete="email"
-                  className="p-3 my-2 rounded bg-gray-700"
-                />
+    <div className="w-full min-h-screen relative flex items-center justify-center">
+      {/* Background Image */}
+      <img
+        className="hidden sm:block absolute w-full h-full object-cover"
+        src="https://assets.nflxext.com/ffe/siteui/vlv3/f841d4c7-10e1-40af-bcae-07a3f8dc141a/f6d7434e-d6de-4185-a6d4-c77a2d08737b/US-en-20220502-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
+        alt="Signup background"
+      />
+      
+      {/* Dark Overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black/70"></div>
+      
+      {/* Signup Form Container - Centered using Flexbox */}
+      <div className="fixed w-full max-w-lg mx-auto z-50 p-4 md:p-8">
+        <div className="bg-black/80 rounded-xl shadow-2xl p-6 md:p-12 text-white">
+          <div className="max-w-[380px] mx-auto">
+            <h1 className="text-4xl font-extrabold mb-8 text-center">Sign Up</h1>
+            
+            {/* Error Message Display */}
+            {error && (
+                <div className="bg-red-700 p-3 mb-4 rounded-md text-sm font-medium text-white shadow-lg">
+                    {error}
+                </div>
+            )}
+            
+            <form onSubmit={handleSubmit} className="w-full flex flex-col space-y-4">
+              {/* Email Input */}
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                type="email" // FIX: Corrected typo from "enail"
+                placeholder="Email"
+                autoComplete="email"
+                required
+                className="p-4 rounded-md bg-gray-700 text-white placeholder-gray-400 
+                           focus:outline-none focus:ring-2 focus:ring-red-600 transition duration-200"
+              />
+              
+              {/* Password Input with Toggle */}
+              <div className="relative">
                 <input
                   onChange={(e) => setPassword(e.target.value)}
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Password"
-                  autoComplete="current-password"
-                  className="p-3 my-2 rounded bg-gray-700"
+                  autoComplete="new-password" // Changed to new-password for signup form
+                  required
+                  className="w-full p-4 rounded-md bg-gray-700 text-white placeholder-gray-400 
+                             focus:outline-none focus:ring-2 focus:ring-red-600 pr-12 transition duration-200"
                 />
-                <button className="bg-red-600 py-3 my-6 rounded font-bold ">
-                  Sign up
+                <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-400 hover:text-white"
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                    {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
                 </button>
-                <div className="flex justify-between items-center text-gray-600 text-sm">
-                  <p>
-                    <input
-                      className="mr-2 text-gray-600 text-sm cursor-pointer"
-                      type="checkbox"
-                    />
-                    Remember me
-                  </p>
-                  <p className="cursor-pointer">Need help?</p>
-                </div>
-                <p className="py-5 cursor-pointer">
-                  <span className="text-gray-600 text-md">
-                    Already sunscribed to Netflix?
-                  </span>
-                  <Link to="/login">Sign in</Link>
+              </div>
+              
+              {/* Submit Button */}
+              <button 
+                type="submit"
+                className="bg-red-600 py-4 mt-6 mb-4 rounded-md font-bold text-xl 
+                           hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-500/50 
+                           transition duration-200 shadow-xl"
+              >
+                Sign Up
+              </button>
+              
+              {/* Footer Links - Adjusted for Sign Up context */}
+              <div className="flex justify-between items-center text-gray-400 text-sm">
+                <p className="flex items-center">
+                  <input
+                    className="mr-2 h-4 w-4 bg-gray-700 border-gray-600 rounded 
+                               text-red-600 focus:ring-red-500 cursor-pointer"
+                    type="checkbox"
+                    id="rememberMe"
+                  />
+                  <label htmlFor="rememberMe">Remember me</label>
                 </p>
-              </form>
-            </div>
+                <p className="cursor-pointer hover:text-white transition">Need help?</p>
+              </div>
+              
+              {/* Login Link */}
+              <p className="py-6 text-center text-md">
+                <span className="text-gray-400 mr-1">Already subscribed to Netflix?</span>
+                <Link to="/login" className="text-white font-semibold hover:text-red-400 transition">
+                  Sign In
+                </Link>
+              </p>
+            </form>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
