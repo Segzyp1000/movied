@@ -62,7 +62,7 @@ function Login() {
                 autoComplete="email"
                 required
                 className="p-4 rounded-md bg-gray-700 text-white placeholder-gray-400 
-                           focus:outline-none focus:ring-2 focus:ring-red-600 transition duration-200"
+                           focus:outline-none focus:ring-2 focus:ring-red-600 transition duration-200 hover:bg-gray-200 hover:text-gray-700"
               />
               
               {/* Password Input with Toggle */}
@@ -74,7 +74,7 @@ function Login() {
                   autoComplete="current-password"
                   required
                   className="w-full p-4 rounded-md bg-gray-700 text-white placeholder-gray-400 
-                             focus:outline-none focus:ring-2 focus:ring-red-600 pr-12 transition duration-200"
+                             focus:outline-none focus:ring-2 focus:ring-red-600 pr-12 transition duration-200 hover:bg-gray-200 hover:text-gray-700"
                 />
                 <button
                     type="button"

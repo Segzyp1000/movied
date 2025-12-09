@@ -6,36 +6,49 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null); // FIXED (should NOT be {})
 
-  function signUp(email, password) {
-    createUserWithEmailAndPassword(auth, email, password);
-    setDoc(doc(db, "users", email), {
-      savedShows: [],
-    });
+  // Sign Up
+  async function signUp(email, password) {
+    // 1. Create auth user
+    const result = await createUserWithEmailAndPassword(auth, email, password);
+
+    // 2. Create Firestore user doc (ONLY if it doesn't exist)
+    const userRef = doc(db, "users", email);
+    const userSnap = await getDoc(userRef);
+
+    if (!userSnap.exists()) {
+      await setDoc(userRef, {
+        savedShows: [],
+      });
+    }
+
+    return result;
   }
 
+  // Log In
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
+  // Log Out
   function logOut() {
     return signOut(auth);
   }
 
+  // Keep user logged in
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      setUser(currentUser || null);
     });
-    return () => {
-      unsubscribe();
-    };
-  });
+
+    return () => unsubscribe();
+  }, []); // FIXED: add dependency array
 
   return (
     <AuthContext.Provider value={{ signUp, logIn, logOut, user }}>
