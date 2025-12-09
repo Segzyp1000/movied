@@ -36,8 +36,8 @@ function MovieCard({ title, fetchURL, rowId }) {
           id={"slider" + rowId}
           className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide   relative"
         >
-          {movies.map((item, id) => (
-            <Movie item={item} />
+          {movies.map((item) => (
+            <Movie item={item} key={item.id} />
           ))}
         </div>
         <FaChevronRight

@@ -11,7 +11,8 @@ const Movie = ({ item }) => {
   const { user } = userAuth();
   const navigate = useNavigate();
 
-  const movieRef = doc(db, "users", user?.email); // Document reference
+const movieRef = user?.email ? doc(db, "users", user.email) : null;
+
 
   // Sync "liked" state with Firestore in real-time
   useEffect(() => {
