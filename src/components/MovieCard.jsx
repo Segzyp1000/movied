@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
 import Movie from "./Movie";
 
 function MovieCard({ title, fetchURL, rowId }) {

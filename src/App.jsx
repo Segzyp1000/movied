@@ -1,4 +1,4 @@
-import React from "react";
+
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -10,13 +10,14 @@ import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
-  RouterProvider,
+  RouterProvider
 } from "react-router-dom";
 import MainLayer from "./Layer/MainLayer";
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayer />}>
@@ -38,9 +39,10 @@ function App() {
   );
   return (
     <>
-      <AuthContextProvider>
+       <AuthContextProvider>
         <RouterProvider router={router} />
       </AuthContextProvider>
+   
     </>
   );
 }
