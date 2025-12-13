@@ -142,7 +142,7 @@ function Main() {
               className={`border py-2 px-5 mr-4 transition duration-200 ${
                 trailerKey 
                   ? 'bg-gray-300 text-black hover:bg-white border-gray-300' 
-                  : 'bg-gray-500 text-gray-800 border-gray-500 cursor-not-allowed'
+                  : 'bg-gray-200 text-gray-900 border-gray-500 cursor-not-allowed'
               }`}
             >
               Play

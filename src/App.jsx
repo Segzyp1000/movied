@@ -8,9 +8,9 @@ import Search from "./components/Search";
 
 import {
   Route,
-  createBrowserRouter,
+  createHashRouter,
   createRoutesFromElements,
-  RouterProvider
+  RouterProvider,
 } from "react-router-dom";
 import MainLayer from "./Layer/MainLayer";
 import { AuthContextProvider } from "./context/AuthContext";
@@ -18,7 +18,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
 
-  const router = createBrowserRouter(
+  const router = createHashRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayer />}>
         <Route index element={<Home />} />
